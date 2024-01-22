@@ -153,3 +153,6 @@ body{
         font-size: 14px;
     }
 }
+.modal_alert{
+    display: none;
+}
