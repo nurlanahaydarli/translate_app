@@ -30,7 +30,7 @@ async function translateGetText() {
     return  target_text.value = TranslateProcess
 }
 
-async function translatorFunc(source_lang = 'en', target_lang = 'az', targetText) {
+async function translatorFunc(source_lang , target_lang, targetText) {
     const options = {
         method: 'POST',
         headers: {
