@@ -17,7 +17,7 @@ async function translateGetText() {
     const user_text = source_text.value;
     if(!user_text){
         modal_alert.style.display='block'
-        alert_text.innerText = "Bura boş ola bilməz!!!"
+        alert_text.innerText = "Göndərilən mətn boş ola bilməz!!!"
         return
     }
     if(source_lang ===  target_lang ){
@@ -84,7 +84,7 @@ let lang_names = lang_list.map((item)=>{
     return `
         <option value=${item.code}>${item.name}</option>
     `
-})
+}).join('')
 
 source_language.innerHTML =lang_names
 target_language.innerHTML =lang_names

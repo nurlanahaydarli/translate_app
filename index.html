@@ -11,25 +11,27 @@
     <title>Translator App</title>
 </head>
 <body>
+<h1 class="text-center text-dark my-3">Translate Api</h1>
 <div class="container">
+
     <div class="wrapper">
-        <div class="text-input">
-            <textarea spellcheck="false"  id="source_text" class="from-text" placeholder="Enter text"></textarea>
-            <textarea spellcheck="false" id="target_text" readonly disabled class="to-text" placeholder="Translation"></textarea>
-        </div>
         <ul class="controls">
             <li class="row from">
                 <select class="source_language">
                 </select>
             </li>
-<!--            <li class="exchange"><i class="fas fa-exchange-alt"></i></li>-->
             <li class="row to">
                 <select class="target_language">
                 </select>
             </li>
         </ul>
+        <div class="text-input">
+            <textarea spellcheck="false"  id="source_text" class="from-text" placeholder="Enter text"></textarea>
+            <textarea spellcheck="false" id="target_text" readonly disabled class="to-text" placeholder="Result"></textarea>
+        </div>
+
     </div>
-    <button id="translate_btn">Translate Text</button>
+    <button id="translate_btn">Translate</button>
 </div>
 <!--alert modal-->
 <div class="modal modal_alert fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"  aria-modal="true">
