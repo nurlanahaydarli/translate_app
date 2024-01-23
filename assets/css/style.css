@@ -173,3 +173,45 @@ body{
 .search_box input{
     max-width: 200px;
 }
+.search_box{
+    position: relative;
+}
+.search_box .search_text{
+    max-width: 300px;
+    border: 1px solid #ddd;
+    padding: 8px 12px 8px 40px;
+    border-radius: 5px;
+    outline: 0;
+}
+.search_input{
+    position: relative;
+}
+.search_input span{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #b7b6b6;
+}
+.result_list{
+    position: absolute;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 100%;
+    z-index: 1;
+    max-height: 300px;
+    overflow: auto;
+    background-color: #fff;
+    display: none;
+}
+.result_list li{
+    padding: 15px 5px;
+}
+.result_list li input{
+    display: none;
+}
+.result_list li label{
+    cursor: pointer;
+}
+.container .spinner_btn{
+    display: none;
+}

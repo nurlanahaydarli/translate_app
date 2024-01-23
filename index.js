@@ -10,14 +10,16 @@ let target_text = document.querySelector("#target_text")
 let modal_alert = document.querySelector(".modal_alert")
 let close_modal = document.querySelector("#close_modal")
 let alert_text = document.querySelector(".alert_text")
-// let search_source = document.querySelector("#search_source")
+let search_source = document.querySelector("#search_source")
+let result_list = document.querySelector(".result_list")
+let spinner_btn = document.querySelector(".spinner_btn")
 
 
+let source_lang = "en"
 
 // ============================= GetTranslate =============================
 async function translateGetText() {
-    const source_lang = source_language.value;
-    const target_lang = target_language.value;
+    const target_lang =target_language.value;
     const user_text = source_text.value;
     if(!user_text){
         modal_alert.style.display='block'
@@ -51,10 +53,14 @@ async function translatorFunc(source_lang , target_lang, targetText) {
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result.data.language)
+        spinner_btn.style.display="block"
+        translate_btn.style.display="none"
         return result.data.translatedText
     } catch (error) {
         console.error(error);
+    }finally {
+        spinner_btn.style.display="none"
+        translate_btn.style.display="block"
     }
 }
 
@@ -83,29 +89,47 @@ async  function getLanguages(){
 }
 
 
-async  function renderLanguage(){
+async  function renderLanguage(lang){
     let lang_names  = await  getLanguages()
-    let lang_inner = lang_names.map((item)=>{
+    let search_lang = lang_names.filter((item)=>{
+        let lower_lang = item.name.toLowerCase()
+        return lower_lang === lang
+    })
+    let lang_inner = search_lang.map((item)=>{
         return `
-        <option value=${item.code}>${item.name}</option>
+        <li>
+            <input type="radio" onclick=choseLang(${item.code}) id=${item.code} value="${item.code}" name="language_source">
+            <label for="${item.code}">${item.name}</label>
+        </li>
     `
     }).join('')
-    source_language.innerHTML =lang_inner
-    target_language.innerHTML =lang_inner
+    let lang_option = lang_names.map((item)=>{
+        return `
+            <option value=${item.code}>${item.name}</option>
+        `
+    }).join("")
+    result_list.innerHTML =lang_inner
+    target_language.innerHTML =lang_option
 }
 
-renderLanguage()
-
-
 // ============================= Search Language =============================
-// search_source.addEventListener("keyup",function (){
-//     let lang = search_source.value;
-//     console.log(lang,'lang')
-// })
-
+search_source.addEventListener("keyup",function (){
+    result_list.style.display="block"
+    let lang = search_source.value;
+    lang = lang.toLowerCase()
+    renderLanguage(lang)
+})
+function choseLang(input){
+    result_list.style.display="none"
+    source_lang = input.value
+    return source_lang
+}
 
 // ============================= Hide Alert modal =============================
 
 close_modal.addEventListener("click",function (){
     modal_alert.style.display='none'
 })
+
+
+renderLanguage()
