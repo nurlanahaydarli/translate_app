@@ -79,13 +79,15 @@ body{
     padding-left: 15px;
     border-left: 1px solid #ccc;
 }
-.controls .row select{
+.controls .row_custom select{
     color: #333;
     border: none;
     outline: none;
     font-size: 18px;
     background: none;
     padding-left: 5px;
+    width: fit-content;
+    appearance: auto!important;
 }
 .text-input textarea::-webkit-scrollbar{
     width: 4px;
@@ -163,4 +165,11 @@ body{
 .modal_alert{
     display: none;
     background-color: rgba(0,0,0,0.5);
+}
+.search_box{
+    flex-wrap: nowrap;
+    gap: 12px;
+}
+.search_box input{
+    max-width: 200px;
 }
