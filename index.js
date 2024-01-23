@@ -39,7 +39,7 @@ async function translatorFunc(source_lang , target_lang, targetText) {
         method: 'POST',
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': '6ed23dc951msh9854ef057cd91bcp1ffa4cjsne02bbfceee53',
+            'X-RapidAPI-Key': '373ee143e8msh1441acd3a498ac6p19cbd2jsnb989971cc502',
             'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
         },
         body: new URLSearchParams({
@@ -51,7 +51,6 @@ async function translatorFunc(source_lang , target_lang, targetText) {
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result.data.language)
         return result.data.translatedText
     } catch (error) {
         console.error(error);
@@ -68,7 +67,7 @@ async  function getLanguages(){
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '6ed23dc951msh9854ef057cd91bcp1ffa4cjsne02bbfceee53',
+            'X-RapidAPI-Key': '373ee143e8msh1441acd3a498ac6p19cbd2jsnb989971cc502',
             'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
         }
     };
@@ -77,6 +76,7 @@ async  function getLanguages(){
         const response = await fetch(url, options);
         const result = await response.json();
         return result.data.languages
+
     } catch (error) {
         console.error(error);
     }
